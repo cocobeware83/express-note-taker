@@ -7,6 +7,10 @@ var fs = require("fs")
 var app = express();
 var PORT = process.env.PORT || 3000;
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static("public"));
+
 
 //TODO --- set up commands to pull info from db.json
 
