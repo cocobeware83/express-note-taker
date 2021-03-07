@@ -39,6 +39,54 @@ var editNote = function(id) {
   })
 };
 
+//show active notes
+var renderActiveNote = function() {
+
+  if (activeNote.id) {
+    $noteTitle.val(activeNote.title);
+    $noteText.val(activeNote.text);
+  } else {
+    $noteTitle.attr("readonly", false);
+    $noteText.attr("readonly", false);
+    $noteTitle.val("");
+    $noteText.val("");
+  }
+};
+
+// save and display new notes to database
+var handleNoteSave = function() {
+  var newNote = {
+    title: $noteTitle.val(),
+    text: $noteText.val()
+  };
+
+  saveNote(newNote).then(function(data) {
+    getAndRenderNotes();
+    renderActiveNote();
+  });
+};
+
+var handleEdit = function (event) {
+  event.stopPropagation();
+  handleNoteView();
+
+  var note = $(this)
+    .parent(".list-group-item")
+    .data();
+
+    if (activeNote.id === note.id) {
+      activeNote = {
+        title: $noteTitle.val(),
+        text: $noteText.val()
+      };
+    }
+  editNote(note.id).then(function() {
+    saveNote(activeNote);
+    getAndRenderNotes();
+    renderActiveNote();
+  })
+    console.log(notemade)
+}
 
 
 
