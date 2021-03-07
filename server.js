@@ -21,9 +21,8 @@ app.get("/notes", function (req, res) {
 app.post("/api/notes", function (req, res) {
   fs.readFile(__dirname + "/db/db.json", 'utf8', function (error, notes) {
     if (error) {
-      return console.log(error)
-    }
-    notes = JSON.parse(notes)
+      return console.log(error)}
+      notes = JSON.parse(notes)
 
     var id = notes[notes.length - 1].id + 1
     var newNote = { title: req.body.title, text: req.body.text, id: id }
