@@ -87,6 +87,46 @@ var handleEdit = function (event) {
   })
     console.log(notemade)
 }
+// Delete the clicked note
+var handleNoteDelete = function(event) {
+  // prevents the click listener for the list from being called when the button inside of it is clicked
+  event.stopPropagation();
+
+  var note = $(this)
+    .parent(".list-group-item")
+    .data();
+
+  if (activeNote.id === note.id) {
+    activeNote = {};
+  }
+
+  deleteNote(note.id).then(function() {
+    getAndRenderNotes();
+    renderActiveNote();
+  });
+};
+
+// display current notes
+var handleNoteView = function() {
+  console.log("isplaying it")
+  activeNote = $(this).data();
+  renderActiveNote();
+};
+
+var handleNewNoteView = function() {
+  activeNote = {};
+  renderActiveNote();
+};
+
+// do not show save button if a note hasn't been made
+var handleRenderSaveBtn = function() {
+  if (!$noteTitle.val().trim() || !$noteText.val().trim()) {
+    $saveNoteBtn.hide();
+  } else {
+    $saveNoteBtn.show();
+  }
+};
+
 
 
 
