@@ -89,7 +89,7 @@ var handleEdit = function (event) {
 }
 // Delete the clicked note
 var handleNoteDelete = function(event) {
-  // prevents the click listener for the list from being called when the button inside of it is clicked
+
   event.stopPropagation();
 
   var note = $(this)
@@ -127,6 +127,30 @@ var handleRenderSaveBtn = function() {
   }
 };
 
+// Render the note list
+var renderNoteList = function(notes) {
+  $noteList.empty();
+
+  var noteListItems = [];
+
+  for (var i = 0; i < notes.length; i++) {
+    var note = notes[i];
+
+    var $li = $("<li class='list-group-item'>").data(note);
+    var $span = $("<span>").text(note.title);
+    var $delBtn = $(
+      "<i class='fas fa-trash-alt float-right text-danger delete-note'>"
+    );
+    var $editBtn = $(
+      "<i class='penStyle fas fa-pen text-light edit-note float-right'>"
+    );
+
+    $li.append($span, $delBtn, $editBtn);
+    noteListItems.push($li);
+  }
+
+  $noteList.append(noteListItems);
+};
 
 
 
