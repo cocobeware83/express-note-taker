@@ -5,6 +5,39 @@ var $newNoteBtn = $(".new-note");
 var $noteList = $(".list-container .list-group");
 
 
+var activeNote = {};
+
+// Get Notes from database
+var getNotes = function() {
+  return $.ajax({
+    url: "/api/notes",
+    method: "GET"
+  });
+};
+
+// Save Notes to database
+var saveNote = function(note) {
+  return $.ajax({
+    url: "/api/notes",
+    data: note,
+    method: "POST"
+  });
+};
+
+// Delete Notes from database
+var deleteNote = function(id) {
+  return $.ajax({
+    url: "api/notes/" + id,
+    method: "DELETE"
+  });
+};
+
+var editNote = function(id) {
+  return $.ajax({
+    url: "api/notes/" + id,
+    method: "PUT"
+  })
+};
 
 
 
@@ -12,8 +45,7 @@ var $noteList = $(".list-container .list-group");
 
 
 
-
-
+//starter code -- rewrite 
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
