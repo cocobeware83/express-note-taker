@@ -68,3 +68,7 @@ html, body {
   padding: 20px;
   cursor: pointer;
 }
+.editPen {
+  padding-right: 12px;
+  color: lightcoral;
+}

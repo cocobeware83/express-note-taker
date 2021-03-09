@@ -142,7 +142,7 @@ var renderNoteList = function(notes) {
       "<i class='fas fa-trash-alt float-right text-danger delete-note'>"
     );
     var $editBtn = $(
-      "<i class='penStyle fas fa-pen text-light edit-note float-right'>"
+      "<i class='editPen fas fa-pen text-light edit-note float-right'>"
     );
 
     $li.append($span, $delBtn, $editBtn);
