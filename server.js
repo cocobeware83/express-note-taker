@@ -49,6 +49,7 @@ app.get("/api/notes", function (req, res) {
   })
 });
 // delete notes
+
 app.delete("/api/notes/:id", function (req, res) {
   const noteId = JSON.parse(req.params.id)
   console.log(noteId)
